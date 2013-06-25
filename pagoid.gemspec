@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Pagoid::VERSION
   spec.authors       = ["Jon Phenow"]
   spec.email         = ["j.phenow@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Standardize paging abstraction}
+  spec.summary       = %q{Easy way to paginate with will_paginate or kaminari backends}
   spec.homepage      = ""
   spec.license       = "MIT"
 

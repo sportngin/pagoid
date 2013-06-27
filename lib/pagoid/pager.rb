@@ -22,7 +22,7 @@ module Pagoid
     # @option options [Fixnum] :order_by Callable on each element (or column) to sort by
     # @option options [Fixnum] :direction "desc" or "asc"
     def initialize(paginatable, options = {})
-      self.paginatable = paginatable
+      self.paginatable = AdapterRouter.new(paginatable).route
       self.options = options.dup
     end
 

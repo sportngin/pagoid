@@ -2,6 +2,10 @@ require "pagoid/version"
 begin
   require 'kaminari'
   require 'kaminari/models/array_extension'
+  if defined?(ActiveRecord::Base)
+    require 'kaminari/models/active_record_extension'
+    ::ActiveRecord::Base.send :include, Kaminari::ActiveRecordExtension
+  end
 rescue LoadError
   begin
     require 'will_paginate'

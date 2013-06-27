@@ -1,3 +1,4 @@
+require 'forwardable'
 # Service Class for handling of adapting paging for both Arrays and ActiveRecord objects.
 # An array of AR Objects should come out the same as if you were to pass in a relation (though
 # likely much slower).
@@ -9,6 +10,9 @@
 #   direction: Descending
 module Pagoid
   class Pager
+    extend Forwardable
+    def_delegators :paginatable, :coerce
+
     # Initialize
     #
     # @param [Object] paginatable Some object(like an Array or ActiveRecord Object) for pagination

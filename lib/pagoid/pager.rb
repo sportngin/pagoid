@@ -85,18 +85,23 @@ module Pagoid
     end
 
     def order_method
-      order_methods.find { |method| coerce.respond_to? method }
+      order_methods.find { |method| coerce.respond_to? method } || sort_proc
     end
 
     def order_method_hash
       {
-        order: ->(orderable) { orderable.order "#{order_by} #{direction}" },
-        sort: ->(orderable) {
+        order: ->(orderable) { orderable.order "#{order_by} #{direction}" }
+      }
+    end
+
+    def sort_proc
+      if coerce.respond_to?(:sort)
+        ->(orderable) {
           orderable.sort { |a,b|
             direction == :asc ? order_by_value(a) <=> order_by_value(b) : order_by_value(b) <=> order_by_value(a)
           }
         }
-      }
+      end
     end
 
     def order_by_value(orderable)

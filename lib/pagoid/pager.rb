@@ -65,7 +65,7 @@ module Pagoid
     end
 
     def ordered
-      should_order? ? coerce(order_method_hash[order_method].call(paginatable)) : coerce
+      should_order? ? coerce(order_callable.call(paginatable)) : coerce
     end
 
     def paged
@@ -80,8 +80,12 @@ module Pagoid
       options[:per_page].to_i > 0 ? options[:per_page].to_i : 100
     end
 
+    def order_callable
+      order_method_hash[order_method] || sort_proc || ->(o) { o }
+    end
+
     def order_method
-      order_methods.find { |method| coerce.respond_to? method } || sort_proc
+      order_methods.find { |method| coerce.respond_to? method }
     end
 
     def order_method_hash

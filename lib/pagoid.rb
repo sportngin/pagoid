@@ -12,6 +12,7 @@ end
 
 require 'pagoid/pager'
 require 'pagoid/controller_extensions'
+require 'pagoid/adapter_router'
 require 'pagoid/engine' if defined?(Rails)
 
 module Pagoid

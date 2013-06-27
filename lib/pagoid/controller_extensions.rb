@@ -4,14 +4,14 @@ module Pagoid
       base.extend ClassMethods
     end
 
-    def paged(resource)
+    def paginated(resource)
       pager = Pager.new(resource, params)
       self.class.apply_pager_blocks(self, pager)
       pager.paginated
     end
 
     module ClassMethods
-      def when_paginated(&block)
+      def paged(&block)
         @pagination_block = block
       end
 

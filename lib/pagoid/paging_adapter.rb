@@ -1,3 +1,4 @@
+require 'delegate'
 module Pagoid
   class PagingAdapter < SimpleDelegator
     attr_accessor :paginatable

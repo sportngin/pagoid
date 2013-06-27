@@ -22,4 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "kaminari"
+  spec.add_development_dependency "will_paginate"
+  spec.add_development_dependency "activerecord"
+  spec.add_development_dependency "activesupport"
 end

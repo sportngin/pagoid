@@ -1,7 +1,7 @@
 module Pagoid
   class Kaminari < PagingAdapter
     def coerce(coerceable = paginatable)
-      coerce?(coerceable) ? Kaminari.paginate_array(Array(coerceable)) : coerceable
+      coerce?(coerceable) ? ::Kaminari.paginate_array(Array(coerceable)) : coerceable
     end
 
     def coerce?(coerceable = paginatable)

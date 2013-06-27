@@ -52,7 +52,7 @@ module Pagoid
     #
     # @return boolean describing whether to display pagination headers
     def display_headers?
-      paginated.present?
+      !paginated.nil?
     end
 
     private
@@ -61,7 +61,7 @@ module Pagoid
     attr_accessor :options
 
     def pered
-      should_per? ? paged.per(per_page) : paged
+      paged.per(per_page)
     end
 
     def ordered
@@ -73,11 +73,7 @@ module Pagoid
     end
 
     def should_order?
-      order_method.present?
-    end
-
-    def should_per?
-      per_page.present?
+      !order_method.nil?
     end
 
     def per_page

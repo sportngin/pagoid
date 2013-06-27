@@ -117,7 +117,7 @@ module Pagoid
     end
 
     def order_by
-      (options[:order_by].present? ? options[:order_by] : :created_at).to_s
+      (!options[:order_by].nil? ? options[:order_by] : :created_at).to_s
     end
 
     def direction

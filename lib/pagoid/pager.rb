@@ -72,18 +72,6 @@ module Pagoid
       ordered.page(page)
     end
 
-    def coerce(coerceable = paginatable)
-      force_coerce? ? Kaminari.paginate_array(Array(coerceable)) : coerceable
-    end
-
-    def force_coerce?(coerceable = paginatable)
-      !(
-        coerceable.respond_to?(:order) &&
-        coerceable.respond_to?(:page) &&
-        coerceable.page.respond_to?(:per)
-      )
-    end
-
     def should_order?
       order_method.present?
     end

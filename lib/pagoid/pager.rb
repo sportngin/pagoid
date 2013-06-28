@@ -65,15 +65,11 @@ module Pagoid
     end
 
     def ordered
-      should_order? ? coerce(order_callable.call(paginatable)) : coerce
+      coerce(order_callable.call(paginatable))
     end
 
     def paged
       ordered.page(page)
-    end
-
-    def should_order?
-      !order_method.nil?
     end
 
     def per_page

@@ -9,6 +9,7 @@ begin
 rescue LoadError
   begin
     require 'will_paginate'
+    require 'will_paginate/array'
   rescue LoadError
     raise LoadError, "Please install kaminari or will_paginate for Pagoid backends"
   end
@@ -18,6 +19,3 @@ require 'pagoid/pager'
 require 'pagoid/controller_extensions'
 require 'pagoid/adapter_router'
 require 'pagoid/engine' if defined?(Rails)
-
-module Pagoid
-end

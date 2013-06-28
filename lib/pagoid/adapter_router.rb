@@ -11,13 +11,16 @@ module Pagoid
     public
 
     def route
-      chosen_adapter = route_table.find { |routeable| useable? routeable }
+      chosen_adapter = configured || route_table.find { |routeable| useable? routeable }
       raise RouterError, "Could not find a suitable Pagoid Adapter" unless chosen_adapter
       load_dependencies chosen_adapter
       constantize(pagoided(chosen_adapter)).new pageable
     end
 
     private
+
+    def configured
+    end
 
     def pagoided(adapter)
       "::Pagoid::#{adapter}"

@@ -43,8 +43,8 @@ describe Pager do
 
   describe "ActiveRecord paging" do
     before do
-      %w[Mike Pat Jon Adam].each do |name|
-        Person.create name: name
+      %w[Adam Jon Mike Pat].each do |name|
+        Person.create(name: name)
       end
     end
 

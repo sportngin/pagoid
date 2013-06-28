@@ -5,6 +5,10 @@ require 'kaminari/models/array_extension'
 module Pagoid
   describe Kaminari do
     subject { described_class.new decorated }
+    before do
+      AdapterRouter.any_instance.stub configured: "Kaminari"
+    end
+
     let(:decorated) { [] }
 
     it_should_behave_like "a pager adapter"

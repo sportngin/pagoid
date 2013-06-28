@@ -2,9 +2,11 @@ require 'delegate'
 module Pagoid
   class PagingAdapter < SimpleDelegator
     attr_accessor :paginatable
+    attr_accessor :attributes
 
-    def initialize(paginatable)
+    def initialize(paginatable, attributes = {})
       self.paginatable = paginatable
+      self.attributes = attributes
       super coerce
     end
 
@@ -18,8 +20,8 @@ module Pagoid
       end
     end
 
-    def chain(object)
-      self.class.new object
+    def chain(object, state = {})
+      self.class.new object, state
     end
   end
 end

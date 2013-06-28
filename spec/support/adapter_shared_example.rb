@@ -1,9 +1,9 @@
 shared_examples "a specific page adaptation" do
   it { should respond_to :page }
+  it { should respond_to :coerce }
 
   describe "post-page methods" do
-    subject { described_class.new(decorated).page(1) }
-    it { should respond_to :coerce }
+    subject { described_class.new(decorated).page(1).per(1) }
     it { should respond_to :total_count }
     it { should respond_to :total_pages }
     it { should respond_to :first_page? }
@@ -11,7 +11,6 @@ shared_examples "a specific page adaptation" do
     it { should respond_to :current_page }
     it { should respond_to :limit_value }
     it { should respond_to :offset_value }
-    it { should respond_to :per }
   end
 end
 

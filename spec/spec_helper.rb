@@ -5,18 +5,9 @@ SimpleCov.start do
 end
 
 require 'pagoid'
-root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-ActiveRecord::Base.establish_connection(
-  adapter: "sqlite3",
-  database: "#{root}/db/pagoid.db"
-)
-ActiveRecord::Base.connection.execute("DROP TABLE IF EXISTS 'people'")
-ActiveRecord::Base.connection.create_table(:people) do |t|
-  t.string :name
-  t.timestamps
-end
-class Person < ActiveRecord::Base
-end
+
+Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
+
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true

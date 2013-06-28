@@ -1,4 +1,9 @@
 require 'active_record'
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
 require 'pagoid'
 root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 ActiveRecord::Base.establish_connection(

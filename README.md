@@ -1,5 +1,7 @@
 # Pagoid
 
+[![Gem Version](https://badge.fury.io/rb/pagoid.png)](http://badge.fury.io/rb/pagoid)
+
 Pagoid extracts the difference between [WillPaginate](https://github.com/mislav/will_paginate) and
 [Kaminari](https://github.com/amatsuda/kaminari) as well as provides a standard callback
 for things like publishing page info to your clients.
